@@ -86,6 +86,23 @@ read. CP1 is written fresh in this repo with the verified versions. Files being 
 (Gradle project, Java, resources, `tools/gen-textures.mjs`), `scripts/build-mod.sh`,
 `scripts/write-release-manifest.mjs`, `public/downloads/`, `app/`, `components/`, `lib/`.
 
+Where this progress is saved: the second v0 chat is connected to `krushnahon99-netizen/krushna`, so this work
+was pushed to **`krushna`, branch `v0/echo-technology`**, not to `echo-8n`. Bring it into `echo-8n`
+(branch `v0/echo-technology`) when a chat connected to `echo-8n` continues.
+
+Saved state (2026-10-23, saved early because the user is low on credits):
+- Written but not compiled yet: Gradle project in `echo-technology/` (versions from the verified table,
+  Gradle 8.14.3 wrapper), `EchoTechnology` initializer, `ModBlocks` with 3 machine blocks (echo_reactor,
+  echo_fabricator, echo_charger, shared `MachineBlock` class), `ModItems` with 7 items (resonant_alloy,
+  echo_circuit, energy_cell, echo_drill, echo_scanner, efficiency_upgrade, capacity_upgrade), `ModItemGroups`,
+  `fabric.mod.json`, `en_us.json`, blockstates, block and item models, block loot tables, the
+  `mineable/pickaxe` tag, `tools/gen-textures.mjs`, `scripts/build-mod.sh`, `scripts/write-release-manifest.mjs`.
+- Still to do, in order:
+  1. Run `echo-technology/tools/gen-textures.mjs` with Node to create the textures the models point at
+     (none exist yet).
+  2. `bash scripts/setup-java.sh`, then `bash scripts/build-mod.sh`; fix compile errors from the real output.
+  3. Publish the JAR to `public/downloads/` and build the mobile download page (`app/`, `components/`, `lib/`).
+
 ## Locked design decisions (change only with a written reason here)
 
 - **Energy unit:** Echo Energy (EE), stored as `long`, always clamped to `[0, capacity]`. Own minimal API in
